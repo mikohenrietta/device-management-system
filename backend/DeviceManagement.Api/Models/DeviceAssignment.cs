@@ -7,5 +7,8 @@
         public int DeviceID { get; set; }
         public DateTime AssignedAt { get; set; }
         public DateTime? UnassignedAt { get; set; }
+
+        public Device Device { get; set; }
+        public User User { get; set; }
     }
 }

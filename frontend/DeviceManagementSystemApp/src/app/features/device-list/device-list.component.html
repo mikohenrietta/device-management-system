@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>System Devices</h2>
+
+  <table class="device-table">
+    <thead>
+      <tr>
+        <th>Device Name</th>
+        <th>Manufacturer</th>
+        <th>Type</th>
+        <th>Operating System</th>
+        <th>OS Version</th>
+        <th>Processor</th>
+        <th>RAM Amount</th>
+        <th>Assigned To</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (device of devices; track device.deviceId) {
+        <tr>
+          <td>{{ device.name }}</td>
+          <td>{{ device.manufacturer }}</td>
+          <td>{{ device.type }}</td>
+          <td>{{ device.operatingSystem }}</td>
+          <td>{{ device.osVersion }}</td>
+          <td>{{ device.processor }}</td>
+          <td>{{ device.ramAmount }}</td>
+          <td>
+            @if (device.assignedUser) {
+              {{ device.assignedUser.name }}
+            } @else {
+              <span class="text-muted">Unassigned</span>
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="3">No devices found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

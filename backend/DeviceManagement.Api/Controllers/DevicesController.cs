@@ -71,6 +71,23 @@ namespace DeviceManagement.Api.Controllers
             return NoContent();
         }
 
-        []
+        [HttpGet("with-users")]
+        public async Task<IActionResult> GetDevicesWithUsers()
+        {
+            var devices = await _context.Devices.Include(d => d.Assignments)
+                .ThenInclude(da => da.User)
+                .Select(d => new
+                {
+                    Name = d.Name,
+                    Manufacturer = d.Manufacturer,
+                    Type = d.Type,
+                    OperatingSystem = d.OperatingSystem,
+                    OSVersion = d.OSVersion,
+                    Processor = d.Processor,
+                    RAMAmount = d.RAMAmount,
+                    AssignedUser = d.Assignments.Select(da => da.User).FirstOrDefault()
+                }).ToListAsync();
+            return Ok(devices);
+        }
     }
 }

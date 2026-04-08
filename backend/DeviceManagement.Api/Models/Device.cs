@@ -11,5 +11,7 @@
         public string Processor { get; set; }
         public int RAMAmount { get; set; }
         public string? Description { get; set; }
+
+        public ICollection<DeviceAssignment> Assignments { get; set; }
     }
 }
