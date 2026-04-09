@@ -1,0 +1,29 @@
+@if (device) {
+  <div class="card">
+    <div class="card-header">
+      <h1>{{ device.name }}</h1>
+    </div>
+    <div class="card-body">
+      <p><strong>Manufacturer:</strong> {{ device.manufacturer }}</p>
+      <p><strong>Processor:</strong> {{ device.processor }}</p>
+      <p><strong>RAM:</strong> {{ device.ramAmount }} GB</p>
+      <p>
+        <strong>OS:</strong> {{ device.operatingSystem }} (v{{
+          device.osVersion
+        }})
+      </p>
+      <hr />
+      <p>
+        <strong>Description:</strong>
+        {{ device.description || "No description provided." }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <button routerLink="/devices" class="btn btn-secondary">
+        Back to List
+      </button>
+    </div>
+  </div>
+} @else {
+  <p>Loading device details...</p>
+}

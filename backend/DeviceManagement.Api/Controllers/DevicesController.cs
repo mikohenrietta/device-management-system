@@ -78,6 +78,7 @@ namespace DeviceManagement.Api.Controllers
                 .ThenInclude(da => da.User)
                 .Select(d => new
                 {
+                    DeviceID = d.DeviceID,
                     Name = d.Name,
                     Manufacturer = d.Manufacturer,
                     Type = d.Type,

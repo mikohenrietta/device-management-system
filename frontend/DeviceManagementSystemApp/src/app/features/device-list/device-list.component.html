@@ -15,9 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      @for (device of devices; track device.deviceId) {
+      @for (device of devices; track device.deviceID) {
         <tr>
-          <td>{{ device.name }}</td>
+          <td>
+            <a [routerLink]="['/devices', device.deviceID]">
+              {{ device.name }}
+            </a>
+          </td>
           <td>{{ device.manufacturer }}</td>
           <td>{{ device.type }}</td>
           <td>{{ device.operatingSystem }}</td>

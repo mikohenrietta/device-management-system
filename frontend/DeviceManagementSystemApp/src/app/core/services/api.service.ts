@@ -14,4 +14,7 @@ export class ApiService {
     return this.http.get<Device[]>(`${this.baseUrl}/Devices/with-users`);
 
   }
+  getDeviceById(id: number): Observable<Device>{
+    return this.http.get<Device>(`${this.baseUrl}/Devices/${id}`)
+  }
 }
